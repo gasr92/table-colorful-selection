@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+        crossorigin="anonymous"></script> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="table-colorful-selection.js"></script>
+
+	<title>Tabela</title>
+</head>
+<body>
+
+    <table class="table table-bordered" 
+        id="tbl-teste">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Serviço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-tr-value='1'>
+                <td>1</td>
+                <td>Registro 1 (com ctrl)</td>
+                <td>
+                    <a href="#" class="btn btn-primary">Alterar</a>
+                </td>
+            </tr>
+            <tr data-tr-value='2'>
+                <td>2</td>
+                <td>Registro 2 (com ctrl)</td>
+                <td>
+                    <a href="#" class="btn btn-primary">Alterar</a>
+                </td>
+            </tr>
+            <tr data-tr-value='3'>
+                <td>3</td>
+                <td>Registro 3 (com ctrl)</td>
+                <td>
+                    <a href="#" class="btn btn-primary">Alterar</a>
+                </td>
+            </tr>
+            <tr data-tr-value='4'>
+                <td>4</td>
+                <td>Registro 4 (com ctrl)</td>
+                <td>
+                    <a href="#" class="btn btn-primary">Alterar</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table id="tblWithoutStyle">
+        <thead>
+            <tr>
+                <th>Col 1</th>
+                <th>Col 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-tr-value='It is row 1'>
+                <td>Row a</td>
+                <td>Row b</td>
+            </tr>
+            <tr data-tr-value='It is row 2'>
+                <td>Row a</td>
+                <td>Row b</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+            var dataOpt =   {  
+                                'table_id' : 'tbl-teste',
+                                'tr_font_color_when_selected' : 'white',
+                                'tr_background_color_when_selected' : 'darkgreen',
+                                'only_select_when_ctrl_is_pressed' : true
+                            };
+            var mainTab = new TableColorfulRowSelection(dataOpt);
+            var secTab = new TableColorfulRowSelection({ 'table_id' : 'tblWithoutStyle' });
+
+            addEventListener('EvSelectedRow', function(e){
+                var strChecked = (e.detail.selected ? 'Selected' : 'Unmarked');
+                var msg = e.detail.table_id + ': ' + e.detail.val + ' ' + strChecked;
+                console.log(msg);
+            });
+    </script>
+
+
+</body>
+</html>
